@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pokeballs>
+	<pokeball id="0" name="pokeball" itemType="2150" effect="100"/>
+	<pokeball id="1" name="gratball" itemType="2151" effect="101"/>
+	<pokeball id="2" name="superball" itemType="2152" effect="102"/>
+	<pokeball id="3" name="ultraball" itemType="2153" effect="103"/>
+	<pokeball id="4" name="saffariball" itemType="2154" effect="104"/>
+</pokeballs>

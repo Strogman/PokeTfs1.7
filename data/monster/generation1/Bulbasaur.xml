@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Bulbasaur" nameDescription="a Bulbasaur" race="grass" experience="320" speed="107">
+    <look type="2" corpse="12855"/>
+    <types first="grass" second="poison"/>
+    <pokedex id="1" portrait="12702" description="It can go for days without eating a single morsel. In the bulb on its back, it stores energy."/>
+    <evolutions>
+        <evo name="Ivysaur"/>
+	</evolutions>
+    <statistics level="20" attack="49" defense="49" specialattack="65" specialdefense="65" vitality="45"/>
+    <flags>
+        <flag pushable="1"/>
+        <flag targetdistance="1"/>
+        <flag hungerdelay="23"/>
+    </flags>
+    <attacks>
+        <attack name="melee" interval="2000" chance="100" range="1" min="-50" max="-100"/>
+        <attack name="Poison Powder" interval="6750" chance="45" range="1"/>
+        <attack name="Leech Seed" interval="9000" chance="60" range="3"/>
+        <attack name="Razor Leaf" interval="1500" chance="10" range="4"/>
+        <attack name="Solar Beam" interval="9000" chance="60" range="1"/>
+        <attack name="Stun Spore" interval="6750" chance="45" range="1"/>
+        <attack name="Quick Attack" interval="2250" chance="15" range="2"/>
+        <attack name="Sleep Powder" interval="12000" chance="80" range="1"/>
+        <attack name="Headbutt" interval="2250" chance="15" range="1"/>
+        <attack name="Vine Whip" interval="3000" chance="20" range="1"/>
+    </attacks>
+    <defenses armor="0" defense="0"/>
+    <voices interval="5000" chance="10">
+        <voice sentence="Bulbasaur!"/>
+    </voices>
+    <loot>
+        <item id="35609" chance="650" countmax="1"/>
+        <item id="35661" chance="1050" countmax="1"/>
+        <item id="35664" chance="4000" countmax="10"/>
+        <item id="35642" chance="1050" countmax="1"/>
+    </loot>
+    <script>
+        <event name="Spawn"/>
+    </script>
+</monster>
