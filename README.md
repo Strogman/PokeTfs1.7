@@ -31,6 +31,8 @@ O projeto PokeTfs 1.7 permite utilizar itens, sprites, arquivos DAT, e mapas das
 - **Geração Moveset 1**: 🔲 Não iniciado
 
 ## Como Contribuir
+https://www.vakinha.com.br/vaquinha/poketibia-tfs-1-7?
+
 Contribuições são bem-vindas! Se você deseja contribuir para o projeto, por favor, siga estas etapas:
 
 1. Faça um fork do repositório.
