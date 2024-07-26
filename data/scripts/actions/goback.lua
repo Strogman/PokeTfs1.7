@@ -8,7 +8,7 @@ function doGoback.onUse(player, item, fromPosition, target, toPosition, isHotkey
 		end
 	end
 
-	return player:doGoPokemon(item)
+	return item == returnPokemon or player:doGoPokemon(item)
 end
 
 local pokeballs = Game.getPokeBalls()
