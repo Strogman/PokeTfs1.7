@@ -8472,7 +8472,7 @@ int LuaScriptInterface::luaPlayerGetFreeCapacity(lua_State* L)
 }
 
 
-int LuaScriptInterface::luaPlayerReturnPokemon(lua_State* L)
+/*int LuaScriptInterface::luaPlayerReturnPokemon(lua_State* L)
 {
 	// player:returnPokemon(item)
 	Player* player = tfs::lua::getUserdata<Player>(L, 1);
@@ -8522,7 +8522,7 @@ int LuaScriptInterface::luaPlayerGoPokemon(lua_State* L)
 	g_game.removeCreature(pokemon, false);
 	tfs::lua::pushBoolean(L, true);
 	return 1;
-}
+}*/
 int LuaScriptInterface::luaPlayerGetDepotChest(lua_State* L)
 {
 	// player:getDepotChest(depotId[, autoCreate = false])
