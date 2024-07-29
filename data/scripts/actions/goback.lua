@@ -3,7 +3,7 @@ BALLON = 1
 BALLUSING = 2
 BALLLOSER = 3
 function Player.returnPokemon(slotBall)
-	local pokemon = player:getPokemon()
+	local pokemon = self:getPokemon()
 	if slotBall:getBallState() == BALLUSING then
 		if not pokemon then 
 			self:sendCancelMessage("Your Pokémon is tired")
