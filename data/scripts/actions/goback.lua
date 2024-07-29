@@ -27,7 +27,7 @@ function Player.goPokemon(slotBall)
 		return false
 	end
 	if slotBall:getBallState() == BALLON then 
-		local monster = Game.createPokemon(slotBall:getPokeName(), self:getPosition())
+		local monster = Game.createMonster(slotBall:getPokeName(), self:getPosition())
 		local hp = slotBall:getPokeHealth()
 		if hp < 1 then 
 			self:sendCancelMessage("Your Pokémon is tired")
