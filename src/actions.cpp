@@ -526,7 +526,7 @@ Thing* Action::getTarget(Player* player, Creature* targetCreature, const Positio
 }
 
 bool Action::executeUse(Player* player, Item* item, const Position& fromPosition, Thing* target,
-                        const Position& toPosition, bool isHotkey, Item* returnPokemon)
+                        const Position& toPosition, bool isHotkey)
 {
 	// onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if (!tfs::lua::reserveScriptEnv()) {
@@ -551,6 +551,5 @@ bool Action::executeUse(Player* player, Item* item, const Position& fromPosition
 	tfs::lua::pushPosition(L, toPosition);
 
 	tfs::lua::pushBoolean(L, isHotkey);
-	tfs::lua::pushThing(L, returnPokemon);
-	return scriptInterface->callFunction(7);
+	return scriptInterface->callFunction(6);
 }
