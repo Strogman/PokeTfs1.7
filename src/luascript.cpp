@@ -2403,6 +2403,18 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod(L, "Item", "getName", LuaScriptInterface::luaItemGetName);
 	registerMethod(L, "Item", "getPluralName", LuaScriptInterface::luaItemGetPluralName);
 	registerMethod(L, "Item", "getArticle", LuaScriptInterface::luaItemGetArticle);
+	
+	registerMethod(L, "Item", "getPokeName", LuaScriptInterface::luaItemGetPokeName);
+	registerMethod(L, "Item", "getPokeNick", LuaScriptInterface::luaItemGetPokeNick);
+	registerMethod(L, "Item", "getPokeHealth", LuaScriptInterface::luaItemGetPokeHealth);
+	registerMethod(L, "Item", "getPokeMaxHealth", LuaScriptInterface::luaItemGetMaxHealth);
+	registerMethod(L, "Item", "getBallState", LuaScriptInterface::luaItemGetBallState);
+	
+	registerMethod(L, "Item", "setPokeName", LuaScriptInterface::luaItemSetPokeName);
+	registerMethod(L, "Item", "setPokeNick", LuaScriptInterface::luaItemSetPokeNick);
+	registerMethod(L, "Item", "setPokeHealth", LuaScriptInterface::luaItemSetPokeHealth);
+	registerMethod(L, "Item", "setPokeMaxHealth", LuaScriptInterface::luaItemSetPokeMaxHealth);
+	registerMethod(L, "Item", "setBallState", LuaScriptInterface::luaItemSetBallState);
 
 	registerMethod(L, "Item", "getPosition", LuaScriptInterface::luaItemGetPosition);
 	registerMethod(L, "Item", "getTile", LuaScriptInterface::luaItemGetTile);
@@ -2484,6 +2496,9 @@ void LuaScriptInterface::registerFunctions()
 
 	registerMethod(L, "Creature", "getLight", LuaScriptInterface::luaCreatureGetLight);
 	registerMethod(L, "Creature", "setLight", LuaScriptInterface::luaCreatureSetLight);
+	
+	registerMethod(L, "Creature", "getPokemons", LuaScriptInterface::luaCreatureGetPokemons);
+	registerMethod(L, "Creature", "getPokemon", LuaScriptInterface::luaCreatureGetPokemon);
 
 	registerMethod(L, "Creature", "getSpeed", LuaScriptInterface::luaCreatureGetSpeed);
 	registerMethod(L, "Creature", "getBaseSpeed", LuaScriptInterface::luaCreatureGetBaseSpeed);
@@ -6336,6 +6351,128 @@ int LuaScriptInterface::luaItemGetName(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaItemGetPokeName(lua_State* L)
+{
+	// item:getPokeName()
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	if (item && item->getPokeBall()) {
+		tfs::lua::pushString(L, item->getPokeBall()->getName());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemGetPokeNick(lua_State* L)
+{
+	// item:getPokeNick()
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	if (item && item->getPokeBall()) {
+		tfs::lua::pushString(L, item->getPokeBall()->getNick());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemGetPokeHealth(lua_State* L)
+{
+	// item:getPokeHealth()
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	if (item && item->getPokeBall()) {
+		lua_pushnumber(L, item->getPokeBall()->getHealth());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemGetPokeMaxHealth(lua_State* L)
+{
+	// item:getPokeMaxHealth()
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	if (item && item->getPokeBall()) {
+		lua_pushnumber(L, item->getPokeBall()->getMaxHealth());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemGetBallState(lua_State* L)
+{
+	// item:getBallState()
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	if (item && item->getPokeBall()) {
+		lua_pushnumber(L, item->getPokeBall()->getState());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaItemSetPokeName(lua_State* L)
+{
+	// item:setPokeName(name)
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	std::string name = tfs::lua::getString(L, 2)
+	if (item && item->getPokeBall()) {
+		tfs::lua::pushString(L, item->getPokeBall()->setName(name));
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemSetPokeNick(lua_State* L)
+{
+	// item:setPokeNick(nick)
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	std::string nick = tfs::lua::getString(L, 2)
+	if (item && item->getPokeBall()) {
+		item->getPokeBall()->setNick(nick);
+		tfs::lua::pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemSetPokeHealth(lua_State* L)
+{
+	// item:setPokeHealth(health)
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	int32_t health = tfs::lua::getNumber<int32_t>(L, 2);
+	if (item && item->getPokeBall()) {
+		item->getPokeBall()->setHealth(health);
+		tfs::lua::pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemSetPokeMaxHealth(lua_State* L)
+{
+	// item:setPokeMaxHealth(item, maxHealth)
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	int32_t maxHealth = tfs::lua::getNumber<int32_t>(L, 2);
+	if (item && item->getPokeBall()) {
+		item->getPokeBall()->setMaxHealth(maxHealth);
+		tfs::lua::pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+int LuaScriptInterface::luaItemSetBallState(lua_State* L)
+{
+	// item:setBallState()
+	Item* item = tfs::lua::getUserdata<Item>(L, 1);
+	uint8_t state = tfs::lua::getNumber<uint8_t>(L, 2);
+	if (item && item->getPokeBall()) {
+		item->getPokeBall()->setState(state);
+		tfs::lua::pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+
 int LuaScriptInterface::luaItemGetPluralName(lua_State* L)
 {
 	// item:getPluralName()
@@ -7994,6 +8131,45 @@ int LuaScriptInterface::luaCreatureGetSummons(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaCreatureGetPokemons(lua_State* L)
+{
+	// creature:getPokemons()
+	Creature* creature = tfs::lua::getUserdata<Creature>(L, 1);
+	if (!creature) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	lua_createtable(L, creature->getSummonCount(), 0);
+
+	int index = 0;
+	for (Creature* summon : creature->getSummons()) {
+		tfs::lua::pushUserdata(L, summon);
+		tfs::lua::setCreatureMetatable(L, -1, summon);
+		lua_rawseti(L, -2, ++index);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaCreatureGetPokemon(lua_State* L)
+{
+	// creature:getPokemon()
+	Creature* creature = tfs::lua::getUserdata<Creature>(L, 1);
+	if (!creature) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Creature* pokemon = creature->getPokemon();
+	if (pokemon) {
+		tfs::lua::pushUserdata(L, pokemon);
+		tfs::lua::setCreatureMetatable(L, -1, pokemon);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int LuaScriptInterface::luaCreatureGetDescription(lua_State* L)
 {
 	// creature:getDescription(distance)
@@ -8295,6 +8471,58 @@ int LuaScriptInterface::luaPlayerGetFreeCapacity(lua_State* L)
 	return 1;
 }
 
+
+int LuaScriptInterface::luaPlayerReturnPokemon(lua_State* L)
+{
+	// player:returnPokemon(item)
+	Player* player = tfs::lua::getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	Item* item = tfs::lua::getUserdata<Item>(L, 2);
+	if (!item || !item->getPokeball()) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	Creature* pokemon = player->getPokemon();
+	if(!pokemon)
+		//player:sendCancelMessage("")
+		tfs::lua::pushBoolean(L, false);
+		return 1;
+	}
+	
+	item->getPokeball()->setHealth(pokemon->getHealth());
+	g_game.removeCreature(pokemon, false);
+	tfs::lua::pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerGoPokemon(lua_State* L)
+{
+	// player:goPokemon(item)
+	Player* player = tfs::lua::getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	Item* item = tfs::lua::getUserdata<Item>(L, 2);
+	if (!item || !item->getPokeball()) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	item->getPokeball()
+	
+	item->getPokeball()->getHealth();
+	item->getPokeball()->getMaxHealth();
+	g_game.removeCreature(pokemon, false);
+	tfs::lua::pushBoolean(L, true);
+	return 1;
+}
 int LuaScriptInterface::luaPlayerGetDepotChest(lua_State* L)
 {
 	// player:getDepotChest(depotId[, autoCreate = false])

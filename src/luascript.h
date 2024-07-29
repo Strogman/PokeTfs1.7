@@ -423,6 +423,18 @@ private:
 	static int luaItemGetName(lua_State* L);
 	static int luaItemGetPluralName(lua_State* L);
 	static int luaItemGetArticle(lua_State* L);
+	
+	static int luaItemGetPokeName(lua_State* L);
+	static int luaItemGetPokeNick(lua_State* L);
+	static int luaItemGetPokeHealth(lua_State* L);
+	static int luaItemGetMaxHealth(lua_State* L);
+	static int luaItemGetBallState(lua_State* L);
+	
+	static int luaItemSetPokeName(lua_State* L);
+	static int luaItemSetPokeNick(lua_State* L);
+	static int luaItemSetPokeHealth(lua_State* L);
+	static int luaItemSetPokeMaxHealth(lua_State* L);
+	static int luaItemSetBallState(lua_State* L);
 
 	static int luaItemGetPosition(lua_State* L);
 	static int luaItemGetTile(lua_State* L);
@@ -540,6 +552,9 @@ private:
 	static int luaCreatureGetDamageMap(lua_State* L);
 
 	static int luaCreatureGetSummons(lua_State* L);
+	
+	static int luaCreatureGetPokemons(lua_State* L);
+	static int luaCreatureGetPokemon(lua_State* L);
 
 	static int luaCreatureGetDescription(lua_State* L);
 

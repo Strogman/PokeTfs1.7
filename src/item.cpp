@@ -52,6 +52,8 @@ Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/)
 			newItem = new Mailbox(type);
 		} else if (it.isBed()) {
 			newItem = new BedItem(type);
+		} else if (it.isPokeBall()) {
+			newItem = new PokeBall(type);
 		} else {
 			newItem = new Item(type, count);
 		}

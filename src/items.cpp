@@ -138,6 +138,7 @@ const std::unordered_map<std::string, ItemParseAttributes_t> ItemParseAttributes
     {"allowdistread", ITEM_PARSE_ALLOWDISTREAD},
     {"storeitem", ITEM_PARSE_STOREITEM},
     {"worth", ITEM_PARSE_WORTH},
+	{"pokeball", ITEM_TYPE_POKEBALL},
 };
 
 const std::unordered_map<std::string, ItemTypes_t> ItemTypesMap = {{"key", ITEM_TYPE_KEY},
@@ -630,6 +631,11 @@ void Items::parseItemNode(const pugi::xml_node& itemNode, uint16_t id)
 
 				case ITEM_PARSE_WEIGHT: {
 					it.weight = pugi::cast<uint32_t>(valueAttribute.value());
+					break;
+				}
+				
+				case ITEM_TYPE_POKEBALL: {
+					it.pokeball = valueAttribute.as_bool();
 					break;
 				}
 

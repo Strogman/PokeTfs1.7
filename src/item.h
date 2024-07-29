@@ -18,6 +18,8 @@ class Player;
 class Teleport;
 class TrashHolder;
 
+class PokeBall;
+
 enum ITEMPROPERTY
 {
 	CONST_PROP_BLOCKSOLID = 0,
@@ -512,6 +514,9 @@ public:
 	virtual const MagicField* getMagicField() const { return nullptr; }
 	virtual BedItem* getBed() { return nullptr; }
 	virtual const BedItem* getBed() const { return nullptr; }
+	
+	virtual PokeBall* getPokeBall() { return nullptr; }
+	virtual const PokeBall* getPokeBall() { return nullptr; }
 
 	const std::string& getStrAttr(itemAttrTypes type) const
 	{

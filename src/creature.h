@@ -211,6 +211,8 @@ public:
 	Creature* getMaster() const { return master; }
 
 	const std::list<Creature*>& getSummons() const { return summons; }
+	const Creature* getPokemons() const { return summons; }
+	const Creature* getPokemon() const { return summons.begin(); }
 
 	virtual int32_t getArmor() const { return 0; }
 	virtual int32_t getDefense() const { return 0; }

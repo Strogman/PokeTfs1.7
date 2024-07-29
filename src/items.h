@@ -42,6 +42,7 @@ enum ItemTypes_t
 	ITEM_TYPE_BED,
 	ITEM_TYPE_KEY,
 	ITEM_TYPE_RUNE,
+	ITEM_TYPE_POKEBALL,
 	ITEM_TYPE_LAST
 };
 
@@ -231,7 +232,7 @@ public:
 	bool isPickupable() const { return  pickupable; }
 	bool isUseable() const { return (useable); }
 	bool hasSubType() const { return (isFluidContainer() || isSplash() || stackable || charges != 0); }
-
+	bool isPokeBall() isPokeBall() const { return (type == ITEM_TYPE_POKEBALL); }
 	Abilities& getAbilities()
 	{
 		if (!abilities) {
@@ -296,6 +297,7 @@ public:
 	int32_t runeMagLevel = 0;
 	int32_t runeLevel = 0;
 	uint64_t worth = 0;
+	bool pokeball = false;
 
 	CombatType_t combatType = COMBAT_NONE;
 
