@@ -7,12 +7,12 @@ O projeto PokeTfs 1.7 permite utilizar itens, sprites, arquivos DAT, e mapas das
 ## Funcionalidades
 - pokeballs config
 - **Goback Tradicional**: ✅ Completo
-- **Pokeballs**: 🔲 Não iniciado
+- **Pokeballs**: 🔄 Em progresso
 - **Pokeball limit**: 🔲 Não iniciado
 - **Pokemon Status**: 🔲 Não iniciado
 - **Order Movements**: 🔲 Não iniciado
 - **Fishing**: 🔲 Não iniciado
-- **Pokedex**: 🔲 Não iniciado
+- **Pokedex**: 🔄 Em progresso
 - **Catch**: 🔄 Em progresso
 - **Fly**: 🔲 Não iniciado
 - **Ride**: 🔲 Não iniciado
