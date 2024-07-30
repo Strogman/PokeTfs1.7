@@ -14,7 +14,7 @@ function Player.returnPokemon(slotBall)
 
 		pokemon:getPosition():sendMagicEffect(slotBall:getBallEffect())
 		slotBall:setPokeHealth(pokemon:getHealth())
-		slotBall:setBallState(CONST_BALL_ISON)
+		slotBall:setBallState(CONST_BALL_IS_ON)
 		Game.removeCreature(pokemon, false)
 		return true
 	end
