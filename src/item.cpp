@@ -13,6 +13,7 @@
 #include "mailbox.h"
 #include "teleport.h"
 #include "trashholder.h"
+#include "pokeball.h"
 
 class Spells;
 

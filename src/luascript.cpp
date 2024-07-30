@@ -36,6 +36,8 @@
 
 #include <ranges>
 
+#include "pokeball.h"
+
 extern Chat* g_chat;
 extern Game g_game;
 extern GlobalEvents* g_globalEvents;
@@ -2407,7 +2409,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod(L, "Item", "getPokeName", LuaScriptInterface::luaItemGetPokeName);
 	registerMethod(L, "Item", "getPokeNick", LuaScriptInterface::luaItemGetPokeNick);
 	registerMethod(L, "Item", "getPokeHealth", LuaScriptInterface::luaItemGetPokeHealth);
-	registerMethod(L, "Item", "getPokeMaxHealth", LuaScriptInterface::luaItemGetMaxHealth);
+	registerMethod(L, "Item", "getPokeMaxHealth", LuaScriptInterface::luaItemGetPokeMaxHealth);
 	registerMethod(L, "Item", "getBallState", LuaScriptInterface::luaItemGetBallState);
 	
 	registerMethod(L, "Item", "setPokeName", LuaScriptInterface::luaItemSetPokeName);
@@ -6356,6 +6358,7 @@ int LuaScriptInterface::luaItemGetPokeName(lua_State* L)
 	// item:getPokeName()
 	Item* item = tfs::lua::getUserdata<Item>(L, 1);
 	if (item && item->getPokeBall()) {
+
 		tfs::lua::pushString(L, item->getPokeBall()->getName());
 	} else {
 		lua_pushnil(L);
@@ -6411,9 +6414,10 @@ int LuaScriptInterface::luaItemSetPokeName(lua_State* L)
 {
 	// item:setPokeName(name)
 	Item* item = tfs::lua::getUserdata<Item>(L, 1);
-	std::string name = tfs::lua::getString(L, 2)
+	std::string name = tfs::lua::getString(L, 2);
 	if (item && item->getPokeBall()) {
-		tfs::lua::pushString(L, item->getPokeBall()->setName(name));
+		item->getPokeBall()->setName(name);
+		tfs::lua::pushBoolean(L, true);
 	} else {
 		lua_pushnil(L);
 	}
@@ -6423,7 +6427,7 @@ int LuaScriptInterface::luaItemSetPokeNick(lua_State* L)
 {
 	// item:setPokeNick(nick)
 	Item* item = tfs::lua::getUserdata<Item>(L, 1);
-	std::string nick = tfs::lua::getString(L, 2)
+	std::string nick = tfs::lua::getString(L, 2);
 	if (item && item->getPokeBall()) {
 		item->getPokeBall()->setNick(nick);
 		tfs::lua::pushBoolean(L, true);
@@ -8153,7 +8157,7 @@ int LuaScriptInterface::luaCreatureGetPokemons(lua_State* L)
 
 int LuaScriptInterface::luaCreatureGetPokemon(lua_State* L)
 {
-	// creature:getPokemon()
+	// player:getPokemon()
 	Creature* creature = tfs::lua::getUserdata<Creature>(L, 1);
 	if (!creature) {
 		lua_pushnil(L);

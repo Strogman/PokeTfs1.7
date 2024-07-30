@@ -16,8 +16,8 @@ public:
 
 	void setName(std::string _name) {name = _name;}
 	void setNick(std::string _nick) {nick = _nick;}
-	void setHealth(std::string _health) {health = _health;}
-	void setMaxHealth(std::string _maxHealth) {maxHealth = _maxHealth;}
+	void setHealth(int32_t _health) { health = _health; }
+	void setMaxHealth(int32_t _maxHealth) { maxHealth = _maxHealth; }
 
 	std::string getName() {return name;}
 	std::string getNick() {return nick;}

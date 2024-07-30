@@ -427,7 +427,7 @@ private:
 	static int luaItemGetPokeName(lua_State* L);
 	static int luaItemGetPokeNick(lua_State* L);
 	static int luaItemGetPokeHealth(lua_State* L);
-	static int luaItemGetMaxHealth(lua_State* L);
+	static int luaItemGetPokeMaxHealth(lua_State* L);
 	static int luaItemGetBallState(lua_State* L);
 	
 	static int luaItemSetPokeName(lua_State* L);

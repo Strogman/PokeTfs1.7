@@ -42,7 +42,7 @@ enum ItemTypes_t
 	ITEM_TYPE_BED,
 	ITEM_TYPE_KEY,
 	ITEM_TYPE_RUNE,
-	ITEM_TYPE_POKEBALL,
+	//ITEM_TYPE_POKEBALL,
 	ITEM_TYPE_LAST
 };
 
@@ -162,6 +162,8 @@ enum ItemParseAttributes_t
 	ITEM_PARSE_ALLOWDISTREAD,
 	ITEM_PARSE_STOREITEM,
 	ITEM_PARSE_WORTH,
+	ITEM_TYPE_POKEBALL,
+
 };
 
 struct Abilities
@@ -232,7 +234,7 @@ public:
 	bool isPickupable() const { return  pickupable; }
 	bool isUseable() const { return (useable); }
 	bool hasSubType() const { return (isFluidContainer() || isSplash() || stackable || charges != 0); }
-	bool isPokeBall() isPokeBall() const { return (type == ITEM_TYPE_POKEBALL); }
+	bool isPokeBall() const { return (type == ITEM_TYPE_POKEBALL); }
 	Abilities& getAbilities()
 	{
 		if (!abilities) {

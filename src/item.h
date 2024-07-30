@@ -516,7 +516,7 @@ public:
 	virtual const BedItem* getBed() const { return nullptr; }
 	
 	virtual PokeBall* getPokeBall() { return nullptr; }
-	virtual const PokeBall* getPokeBall() { return nullptr; }
+	virtual const PokeBall* getPokeBall() const { return nullptr; }
 
 	const std::string& getStrAttr(itemAttrTypes type) const
 	{

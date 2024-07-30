@@ -3,7 +3,7 @@
 
 #include "otpch.h"
 
-#include "bed.h"
+#include "pokeball.h"
 
 #include "condition.h"
 #include "game.h"
